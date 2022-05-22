@@ -1,45 +1,59 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import './App.css';
+
+const Title = (pros: { msg: string; age: number; titleColor?: string }) => {
+  const { msg, age, titleColor = '' } = pros;
+  return (
+    <h1 className={`${titleColor} title`}>
+      {msg} - age: {age}
+    </h1>
+  );
+};
+
+function App2() {
+  const elements: any = [
+    {
+      name: 'angular',
+      id: 1,
+    },
+    {
+      name: 'react',
+      id: 2,
+    },
+  ];
+  return (
+    <div className="App">
+      {elements.map((el: any) => {
+        const text = 'Me gusta ' + el.name;
+        return <Title msg={text} titleColor="red" key={el.id} age={12}></Title>;
+      })}
+
+      {/* <Title msg="Hola 2 " titleColor="salmon" age={14}></Title> */}
+    </div>
+  );
+}
+
+//
+const Sports = () => <p>Sports page</p>;
+const Movies = () => <p>Movies page</p>;
+
+const component = {
+  Sports,
+  Movies,
+};
+
+let ListNames = ({children, name}: any) => {
+  return children(name)
+}
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <component.Movies></component.Movies>
+
+      <ListNames></ListNames>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

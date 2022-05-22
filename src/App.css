@@ -40,3 +40,16 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.title {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.salmon {
+  color: salmon;
+}
+
+.red {
+  color: red;
+}
